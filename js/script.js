@@ -1,3 +1,8 @@
+var firstimg = document.getElementById('firstimg');
+var secondimg = document.querySelector('#secondimg');
+var thirdimg = document.querySelector('#thirdimg');
+var imagesSection = document.querySelector('.images');
+var totalClicks = 0;
 var names = [
     'bag.jpg',
     'banana.jpg',
@@ -19,9 +24,6 @@ var names = [
     'usb.gif',
     'water-can.jpg',
     'wine-glass.jpg'];
-    var firstimg = document.getElementById('firstimg');
-    var secondimg = document.querySelector('#secondimg');
-    var thirdimg = document.querySelector('#thirdimg');
     
     console.log(firstimg);
     console.log(secondimg);
@@ -43,10 +45,11 @@ console.log(Images.all) ;
 
 var firstone , secondone, thirdone;
 function render(){
-    
+    do{
     firstone = Images.all[randomNumber(0,Images.all.length -1)];
     secondone = Images.all[randomNumber(0,Images.all.length -1)];
-    thirdone = Images.all[randomNumber(0,Images.all.length -1)];
+    thirdone = Images.all[randomNumber(0,Images.all.length -1)];}
+    while(firstone===secondone || firstone===thirdone ||thirdone===secondone);
     console.log(firstone);
     console.log(secondone);
     console.log(thirdone);
@@ -78,9 +81,7 @@ function randomNumber(min,max){
     return Math.floor(Math.random() * (max-min+1))+min;
 }
 
-var totalClicks = 0;
 
-var imagesSection = document.querySelector('.images');
 imagesSection.addEventListener('click', handleClickonIMG);
 
 function handleClickonIMG(event) {
