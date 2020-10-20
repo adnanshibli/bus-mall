@@ -44,6 +44,7 @@ for (var i = 0; i < names.length; i++) {
 console.log(Images.all) ;
 
 var firstone , secondone, thirdone;
+
 function render(){
     do{
     //   do {
@@ -137,12 +138,15 @@ function handleClickonIMG(event) {
       if (event.target.id === 'thirdimg') {
         thirdone.clicks++;
       }
+      getClicks();
+
 render();
     }
     
   } else if (totalClicks === 20){
     renderSummary();
     createChartSummary();
+    getImg();
     console.log(totalClicks);
   }
 }
@@ -202,3 +206,34 @@ var barChart = new Chart(ctx, {
   }
 });
 }
+// lab 13
+
+function getImg() {
+  var imagesString = JSON.stringify(Images.all);
+  localStorage.setItem('Images', imagesString);
+}
+
+function secondTime() {
+
+  var ImagesString = localStorage.getItem('Images');
+  var ImagesARR = JSON.parse(ImagesString);
+  if (ImagesARR) {
+    Images.all=ImagesARR;
+  }}
+  console.log(Images.all);
+  secondTime();
+  /// second function
+  function getClicks(){
+    var clicksString = JSON.stringify(totalClicks);
+    localStorage.setItem('clicks', clicksString);
+  }
+
+  function clicksSecond(){
+    var clicksString =localStorage.getItem('clicks');
+    var ClicksA =JSON.parse(clicksString);
+    if (ClicksA){
+      totalClicks=ClicksA;
+    }
+     
+  }console.log(totalClicks);
+  clicksSecond();
